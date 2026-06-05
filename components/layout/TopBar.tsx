@@ -1,13 +1,19 @@
-'use client'
+'use client' // Yeh line upar hona zaroori hai
 import { useState, useEffect } from 'react';
 
 export default function TopBar() {
-  const [greeting, setGreeting] = useState('');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const hour = new Date().getHours();
-    setGreeting(hour < 12 ? "Good morning, Creator." : "Good afternoon, Creator.");
+    setMounted(true);
   }, []);
 
-  return <p className="text-[11px] text-ink-3">{greeting}</p>;
+  if (!mounted) return null; // Server par ye component hide rahega
+
+  return (
+    <div className="flex justify-between items-center w-full">
+      {/* Tumhara baki code yahan rahega */}
+      <p>Good Morning/Afternoon, Creator.</p>
+    </div>
+  );
 }
