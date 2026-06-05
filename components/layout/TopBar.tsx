@@ -6,15 +6,8 @@ export default function TopBar() {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    const message = hour < 12 ? "Good morning, Creator." : "Good afternoon, Creator.";
-    setGreeting(message);
+    setGreeting(hour < 12 ? "Good morning, Creator." : "Good afternoon, Creator.");
   }, []);
 
-  return (
-    <div>
-      <p className="text-[11px] text-ink-3">
-        {greeting}
-      </p>
-    </div>
-  );
+  return <p className="text-[11px] text-ink-3">{greeting}</p>;
 }
